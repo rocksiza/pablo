@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="main.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <div class="deck">
+        <h1>Pablo</h1>
+        <button id="draw">Deal!</button>
+        <div></div>
+        <div id="deck"></div>
+        <select id="peek1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <select id="peek2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <br><button id="peek">Peek at your cards</button>
+</div>
+<script>
+$("#peek1").hide()
+$("#peek2").hide()
+$("#peek").hide()
+$("#draw").click(function(){
+    console.log("Yes")
+    deal()
+    $("#draw").hide()
+    $("#peek1").show()
+    $("#peek2").show()
+    $("#peek").show()
+})
+$("#peek").click(function(){
+    var card1 = p1[($("#peek1").val())-1]
+    var card2 = p1[($("#peek2").val())-1]
+    var message = "Card " + $("#peek1").val() + " is " + card1["Value"] + " of " + card1["Suit"] + ". Card " + $("#peek2").val() + " is " + card2["Value"] + " of " + card2["Suit"] + "."  
+    console.log(card1,card2)
+    alert(message)
+})
+
+
+</script>
+</body>
+</html>
