@@ -1,5 +1,5 @@
 var cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-var suits = ["diamonds", "hearts", "spades", "clubs"];
+var suits = ["Diamond", "Heart", "Spade", "Club"];
 var deck = new Array();
 var p1 = []
 var p2 = []
@@ -49,6 +49,23 @@ function deal(){
 
 }
  
+function peekreveal(){
+	var card1 = p1[($("#peek1").val())-1]
+    var card1N = "#card" + $("#peek1").val()
+    var card1file = card1["Value"] + "_" + card1["Suit"] + ".jpg"
+    var card2 = p1[($("#peek2").val())-1]
+    var card2N = "#card" + $("#peek2").val()
+    var card2file = card2["Value"] + "_" + card2["Suit"] + ".jpg"
+    console.log(card1file,card2file)
+
+    var message = "Card " + $("#peek1").val() + " is " + card1["Value"] + " of " + card1["Suit"] + ". Card " + $("#peek2").val() + " is " + card2["Value"] + " of " + card2["Suit"] + "."  
+    console.log(card1,card2)
+
+    //
+    $(card1N).attr("src","cards/moai/" + card1file);
+    $(card2N).attr("src","cards/moai/" + card2file);
+}
+
 deck = getDeck();
 deck = shuffle(deck);
 console.log(deck)

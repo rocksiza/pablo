@@ -1,12 +1,12 @@
 <html>
 <head>
     <link rel="stylesheet" href="main.css">
-    <script type="text/javascript" src="main.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
-    <div class="deck">
+<div class="deck">
         <h1>Pablo</h1>
         <button id="draw">Deal!</button>
         <div></div>
@@ -24,12 +24,36 @@
             <option value="4">4</option>
         </select>
         <br><button id="peek">Peek at your cards</button>
+        <button id="ready">ready?</button>
 </div>
+<div class="cardZone">
+<img src="cards/moai/back.jpg" class="card" id="card1">
+<img src="cards/moai/back.jpg" class="card" id="card2">
+</div>
+<div class="cardZone">
+<img src="cards/moai/back.jpg" class="card" id="card3">
+<img src="cards/moai/back.jpg" class="card" id="card4">
+</div>
+
+
 <script>
+
+function revert(){
+    $("#card1").attr("src","cards/moai/back.jpg");
+    $("#card2").attr("src","cards/moai/back.jpg");
+    $("#card3").attr("src","cards/moai/back.jpg");
+    $("#card4").attr("src","cards/moai/back.jpg");
+}
+
 $("#peek1").hide()
 $("#peek2").hide()
 $("#peek").hide()
+$("#ready").hide()
+$(".cardZone").hide()
+
+
 $("#draw").click(function(){
+    $(".cardZone").show()
     console.log("Yes")
     deal()
     $("#draw").hide()
@@ -37,14 +61,18 @@ $("#draw").click(function(){
     $("#peek2").show()
     $("#peek").show()
 })
-$("#peek").click(function(){
-    var card1 = p1[($("#peek1").val())-1]
-    var card2 = p1[($("#peek2").val())-1]
-    var message = "Card " + $("#peek1").val() + " is " + card1["Value"] + " of " + card1["Suit"] + ". Card " + $("#peek2").val() + " is " + card2["Value"] + " of " + card2["Suit"] + "."  
-    console.log(card1,card2)
-    alert(message)
+
+$("#peek").click(async function(){
+    $("#peek1").hide()
+    $("#peek2").hide()
+    $("#peek").hide()
+    $("#ready").show()
+    peekreveal()
 })
 
+$("#ready").click(function(){
+    revert()
+})
 
 </script>
 </body>
